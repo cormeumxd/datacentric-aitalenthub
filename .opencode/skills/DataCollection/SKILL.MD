@@ -81,6 +81,9 @@ bash -c "source .venv/bin/activate && crawl4ai-skill crawl https://example.com"
 bash -c "source .venv/bin/activate && crawl4ai-skill crawl https://example.com"
 ```
 
+Или пиши скрипты с использование bs4, time.sleep() и т.д. для парсинга контента новостных ссылок.
+Не вставляй тему и саммари, если их нет в данных, просто сохраняй текст и источник
+
 # 6. Унифицируй скачанные датасеты:
 Датасеты из HF и скрапингаs должны иметь 3 столбца (либо 2, если нет лейблов): **text**, **theme**, **summary** **source**, **meta**. В **meta**
 добавляй данные, из других столбцов кроме первых двух, если они существуют. Собери один датасет и сохрани его в `data/processed/processed.csv`. Не добавляй **summary** и **theme** если они неизвестны
