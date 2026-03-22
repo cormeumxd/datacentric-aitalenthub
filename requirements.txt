@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib
+seaborn
+requests
+datasets
+beautifulsoup4
+huggingface-hub
+kaggle
+kagglehub
+crawl4ai-skill
