@@ -17,7 +17,7 @@ mkdir -p data/raw
 ```
 
 # 1. Поиск
-Сроси пользователя, какие новости он хочет найти
+Спроси пользователя, где искать новости и для какой задачи
 Гайд по использованию скрипта для поиска и загрузки датасетов по сегментации автомобилей:
 
 | Action | Command |
@@ -44,6 +44,12 @@ bash -c '''source .venv/bin/activate && crawl4ai-skill search "python web scrapi
 # Scrape a single web page
 bash -c "source .venv/bin/activate && crawl4ai-skill crawl https://example.com"
 ```
+```bash
+# Crawl entire website / spider
+bash -c "source .venv/bin/activate && crawl4ai-skill crawl-site https://docs.python.org --max-pages 50"
+```
+
+Или пиши скрипты по скрапингу на bs4. Важно чтобы кол-во совпадало с тем что написал пользователь
 
 # 3. Таблица для пользователя
 Показать таблицу с ОБЯЗАТЕЛЬНЫМ разделением:

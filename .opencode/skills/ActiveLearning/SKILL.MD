@@ -1,3 +1,4 @@
+---
 name: ActiveLearning Skill
 description: Реализует Active Learning цикл для умного отбора данных: старт с N=50, 5 итераций, сравнение стратегий entropy vs random, оценка экономии данных
 license: MIT

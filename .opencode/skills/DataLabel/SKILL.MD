@@ -66,27 +66,22 @@ compatibility: opencode
 **Обязательно покажи спецификацию пользователю и получи одобрение перед продолжением!**
 
 ### Шаг 3: Автоматическая разметка
-В зависимости от модальности:
+Используй инструмент `Task` для запуска агента, который выполнит разметку:
 
-**Для текста:**
-```bash
-# Установка зависимостей
-.venv/bin/python -m pip install transformers datasets scikit-learn
-
-# Запуск авторазметки
-.venv/bin/python .opencode/skills/AutoLabel/scripts/auto_label.py     --input data/processed/processed.csv     --output data/processed/labeled_data.csv     --modality text     --task classification     --spec data/labeling/specs/labeling_spec.md
+```python
+Task(
+  subagent_type="general",
+  description="Автоматическая разметка данных",
+  prompt="""
+  Используя спецификацию из data/labeling/specs/labeling_spec.md, разметь данные в data/processed/processed.csv.
+  
+  Требования к результату:
+  1. Сохранить результат в data/processed/labeled_data.csv.
+  2. Добавить колонки: 'auto_label', 'confidence' (значение от 0 до 1), 'model_version'.
+  3. Использовать подход, соответствующий модальности (text/audio/image).
+  """
+)
 ```
-
-**Для изображений:**
-```bash
-.venv/bin/python .opencode/skills/AutoLabel/scripts/auto_label.py     --input data/processed/images/     --output data/processed/labeled_images.csv     --modality image     --task classification     --spec data/labeling/specs/labeling_spec.md
-```
-
-**Требования к скрипту авторазметки:**
-- Использовать zero-shot или few-shot подход (Hugging Face transformers (легковесная модель))
-- Сохранять confidence score для каждой метки (0-1)
-- Добавить колонки: `auto_label`, `confidence`, `model_version`
-- Обработка ошибок и логирование
 
 ### Шаг 4: Human-in-the-loop (флаги низкой уверенности)
 Автоматически создать файл для ручной разметки:
